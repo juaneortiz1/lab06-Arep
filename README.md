@@ -72,12 +72,12 @@ The application is deployed across two EC2 instances on AWS:
 
 1. **Clone the Repository**
    ```bash
-   git clone [<URL-of-the-repository>](https://github.com/juaneortiz1/lab05-Arep.git)
+   git clone https://github.com/juaneortiz1/lab05-Arep.git
    ```
 
 2. **Navigate to the Project Directory**
    ```bash
-   cd cd lab05-Arep/
+   cd lab05-Arep/
    ```
 
 3. **Install Dependencies**
@@ -132,7 +132,7 @@ https://github.com/user-attachments/assets/c31bb496-94ac-4eeb-817f-b527ae2bfdf1
 
 This project is licensed under the MIT License.
 
-##Contact
+## Contact
 
 For any questions or further information, feel free to reach out:
 
