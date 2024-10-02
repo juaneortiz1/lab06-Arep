@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Property Management</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script>
         async function fetchProperties() {
             const response = await fetch('/properties');
@@ -13,9 +15,16 @@
             properties.forEach(property => {
                 propertyList.innerHTML += `
                     <li>
-                        ${property.address} - $${property.price} - ${property.size} sqft
-                        <button onclick="editProperty(${property.id})">Edit</button>
-                        <button onclick="deleteProperty(${property.id})">Delete</button>
+                        <div class="property-info">
+                            <strong>Address:</strong> ${property.address} <br>
+                            <strong>Price:</strong> $${property.price} <br>
+                            <strong>Size:</strong> ${property.size} sqft <br>
+                            <strong>Description:</strong> ${property.description}
+                        </div>
+                        <div class="property-buttons">
+                            <button onclick="editProperty(${property.id})"><i class="fas fa-edit"></i> Edit</button>
+                            <button onclick="deleteProperty(${property.id})"><i class="fas fa-trash-alt"></i> Delete</button>
+                        </div>
                     </li>
                 `;
             });
@@ -33,6 +42,7 @@
                 body: JSON.stringify({ address, price, size, description })
             });
             fetchProperties();
+            document.querySelector("form").reset();
         }
 
         async function editProperty(id) {
