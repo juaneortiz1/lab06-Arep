@@ -5,6 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+/**
+ * The Property class represents a real estate property.
+ * This class is mapped to the 'properties' table in the database.
+ * It provides the attributes and methods for managing property details.
+ *
+ * Annotations:
+ * - @Entity: Indicates that this class is a JPA entity.
+ */
+
 @Entity
 public class Property {
 
