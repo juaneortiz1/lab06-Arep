@@ -23,6 +23,7 @@ public class SecurityConfig {
                         .requestMatchers("/users/register").permitAll()
                         .requestMatchers("/login.html").permitAll()
                         .requestMatchers("/index.html").authenticated()
+                        .requestMatchers("/register.html").permitAll()
                         .requestMatchers("/properties/**").authenticated()
                         .anyRequest().permitAll()
                 )
