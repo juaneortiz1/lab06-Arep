@@ -29,6 +29,7 @@ public class RegisterController {
 
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
+
         userRepository.save(user);
         return ResponseEntity.status(HttpStatus.CREATED).body("User registered successfully");
     }
