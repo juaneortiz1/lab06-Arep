@@ -20,22 +20,23 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/users/register").permitAll()
-                        .requestMatchers("/login.html", "/register.html", "/index.html", "/styles.css").permitAll()
-                        .requestMatchers("/properties/**").authenticated()
+                        .requestMatchers("/login.html", "/register.html", "/styles.css").permitAll()  // Páginas públicas
+                        .requestMatchers("/index.html").authenticated()  // index.html requiere autenticación
+                        .requestMatchers("/properties/**").authenticated()  // Todas las rutas de properties requieren autenticación
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login.html")
-                        .defaultSuccessUrl("/index.html", true)
+                        .loginPage("/login.html")  // Página de login servida por Apache
+                        .defaultSuccessUrl("/index.html", true)  // Redirigir a index.html después de login exitoso
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login.html")
+                        .logoutSuccessUrl("/login.html")  // Después de logout, redirigir a login.html
                         .permitAll()
                 );
 
         return http.build();
     }
+
 
 }
