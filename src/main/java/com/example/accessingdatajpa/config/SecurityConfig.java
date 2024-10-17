@@ -21,22 +21,21 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/users/register").permitAll()
-                        .requestMatchers("/login").permitAll()
-                        .requestMatchers("/index.html").authenticated()
-                        .requestMatchers("/register.html").permitAll()
+                        .requestMatchers("/login.html", "/register.html", "/index.html", "/styles.css").permitAll()
                         .requestMatchers("/properties/**").authenticated()
                         .anyRequest().permitAll()
                 )
                 .formLogin(form -> form
-                        .loginPage("/login")
+                        .loginPage("/login.html")
                         .defaultSuccessUrl("/index.html", true)
                         .permitAll()
                 )
                 .logout(logout -> logout
-                        .logoutSuccessUrl("/login")
+                        .logoutSuccessUrl("/login.html")
                         .permitAll()
                 );
 
         return http.build();
     }
+
 }
